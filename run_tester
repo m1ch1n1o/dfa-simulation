@@ -1,0 +1,21 @@
+#! /bin/bash
+IN_DIR="/home/michinio/cimaka/dfa-simulation/P2/In (public)"
+OUT_DIR="/home/michinio/cimaka/dfa-simulation/P2/Out (public)"
+
+declare -i correct=0
+for i in {00..19}
+    do
+        res=$(cat "${IN_DIR}/in${i}.txt" | ./run)
+        ans=$(cat "${OUT_DIR}/out${i}.txt")
+        echo "Your answer:    ${res}"
+        echo "Correct Answer: ${ans}"
+        if [ "$res" ==  "$ans" ]; 
+        then
+            echo "1/1"
+            ((correct=correct+1))
+        else
+            echo "0/1"
+        fi
+        echo
+    done    
+echo "${correct}/20"
